@@ -51,10 +51,11 @@
               <p>Child I Component</p>
               <HelloUser/>
               <h3> Name: {this.state.name} </h3>
-              <ShowList names={this.state.friends} />
               <hr/>
               <p>Wrapping Component</p>
-              <span><WrappingText>Heyyyy guurl</WrappingText></span>
+              <span><WrappingText>Heyyyy guurl! This is wrapped in a Component that has a pink background.</WrappingText></span>
+              <hr/>
+              <ShowList names={this.state.friends} />
             </div>
           )
         }
