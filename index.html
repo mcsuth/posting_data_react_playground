@@ -27,7 +27,8 @@
 
           render: function(){
             return (
-              <div>
+              <div style={{'background': '#eee'}}>
+                <p>Parent Component</p>
                 Hello {this.state.username} <br/>
                 Change username: <input type="text" value={this.state.username} onChange={this.onClickHandleChange}/>
               </div>
@@ -46,10 +47,14 @@
 
         render: function(){
           return (
-            <div>
+            <div style={{'background': '#DDD'}}>
+              <p>Child I Component</p>
               <HelloUser/>
               <h3> Name: {this.state.name} </h3>
               <ShowList names={this.state.friends} />
+              <hr/>
+              <p>Wrapping Component</p>
+              <span><WrappingText>Heyyyy guurl</WrappingText></span>
             </div>
           )
         }
@@ -62,7 +67,8 @@
             return <li> {friend} </li>;
           });
           return (
-            <div>
+            <div style={{'background': '#CCC'}}>
+              <p>Child II Component</p>
               <h3> Friends </h3>
               <ul>
                 {listItems}
@@ -72,6 +78,14 @@
         }
       });
 
+      // A Wrapping Compnent
+      var WrappingText = React.createClass({
+        render: function() {
+          return (
+            <div style={{'background': 'pink'}}>{this.props.children}</div>
+          )
+        }
+      });
 
       React.render(<FriendsContainer />, document.getElementById('app'));
 
