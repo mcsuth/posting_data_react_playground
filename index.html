@@ -28,7 +28,7 @@
           render: function(){
             return (
               <div style={{'background': '#eee'}}>
-                <p>Parent Component</p>
+                <p><u>Parent Component</u></p>
                 Hello {this.state.username} <br/>
                 Change username: <input type="text" value={this.state.username} onChange={this.onClickHandleChange}/>
               </div>
@@ -48,14 +48,14 @@
         render: function(){
           return (
             <div style={{'background': '#DDD'}}>
-              <p>Child I Component</p>
+              <p><u>Child I Component</u></p>
               <HelloUser/>
               <h3> Name: {this.state.name} </h3>
               <hr/>
               <p>Wrapping Component</p>
               <span><WrappingText>Heyyyy guurl! This is wrapped in a Component that has a pink background.</WrappingText></span>
               <hr/>
-              <ShowList names={this.state.friends} />
+              <ShowList ahhhhhhhhhhh={this.state.friends} />
             </div>
           )
         }
@@ -64,12 +64,12 @@
       // Child II Component
       var ShowList = React.createClass({
         render: function(){
-          var listItems = this.props.names.map(function(friend){
+          var listItems = this.props.ahhhhhhhhhhh.map(function(friend){
             return <li> {friend} </li>;
           });
           return (
             <div style={{'background': '#CCC'}}>
-              <p>Child II Component</p>
+              <p><u>Child II Component</u></p>
               <h3> Friends </h3>
               <ul>
                 {listItems}
