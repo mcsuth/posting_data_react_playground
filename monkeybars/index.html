@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/jsx">
+
+      // Parent Component
+      var HelloUser = React.createClass({
+          getInitialState: function(){
+            return {
+              username: '@mcsuth'
+            }
+          },
+
+          onClickHandleChange: function(event) {
+              this.setState({
+                  username: event.target.value,
+              });
+          },
+
+          render: function(){
+            return (
+              <div style={{'background': '#eee'}}>
+                <p><u>Parent Component</u></p>
+                Hello {this.state.username} <br/>
+                Change username: <input type="text" value={this.state.username} onChange={this.onClickHandleChange}/>
+              </div>
+            )
+          }
+      });
+
+      // Child I Component
+      var FriendsContainer = React.createClass({
+        getInitialState: function(){
+          return {
+            name: 'Yo Mama',
+            friends: ['Jake Lingwall', 'Murphy Randall', 'Merrick Christensen']
+          }
+        },
+
+        render: function(){
+          return (
+            <div style={{'background': '#DDD'}}>
+              <p><u>Child I Component</u></p>
+              <HelloUser/>
+              <h3> Name: {this.state.name} </h3>
+              <hr/>
+              <p>Wrapping Component</p>
+              <span><WrappingText>Heyyyy guurl! This is wrapped in a Component that has a pink background.</WrappingText></span>
+              <hr/>
+              <ShowList ahhhhhhhhhhh={this.state.friends} />
+            </div>
+          )
+        }
+      });
+
+      // Child II Component
+      var ShowList = React.createClass({
+        render: function(){
+          var listItems = this.props.ahhhhhhhhhhh.map(function(friend){
+            return <li> {friend} </li>;
+          });
+          return (
+            <div style={{'background': '#CCC'}}>
+              <p><u>Child II Component</u></p>
+              <h3> Friends </h3>
+              <ul>
+                {listItems}
+              </ul>
+            </div>
+          )
+        }
+      });
+
+      // A Wrapping Compnent
+      var WrappingText = React.createClass({
+        render: function() {
+          return (
+            <div style={{'background': 'pink'}}>{this.props.children}</div>
+          )
+        }
+      });
+
+      React.render(<FriendsContainer />, document.getElementById('app'));
+
+    </script>
+  </body>
+</html>
